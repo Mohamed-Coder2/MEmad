@@ -1,0 +1,19 @@
+/* Theme */
+
+body.white-blue main {
+	background: #FAFAFA;
+	color: #0277BD;
+	--pdf-button-bg: #FAFAFA;
+  --pdf-button-text: #0277BD;
+  --pdf-button-hover: #FAFAFA;
+	--pdf-button-border: #0277BD;
+	--heading-color: #0277BD;
+}
+
+body.white-blue .icons-social a {
+	color: #0277BD;
+}
+
+body.white-blue .icons-social a svg path{
+	fill: #0277BD;
+}

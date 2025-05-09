@@ -1,0 +1,105 @@
+.weatherCont {
+  font-family: Arial, sans-serif;
+
+  background-color: #F6F6F3;
+  width: 25rem;
+  max-width: 40rem;
+  min-width: 15rem;
+
+  height: 12rem;
+  max-height: 20rem;
+  min-height: 8rem;
+
+  border-radius: 1rem;
+
+  color: #0A100D;
+  text-align: center;
+
+  padding: 1rem;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.dates {
+  display: flex;
+  font-size: 0.9rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-data {
+  padding: 1rem;
+}
+
+.temperature {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+}
+
+.weather-description {
+  font-size: 0.8rem;
+  color: #902923;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-around;
+  font-size: 0.8rem;
+}
+
+.weather-details span {
+  display: flex;
+  align-items: center;
+}
+
+.weather-details p {
+  margin-left: 0.5rem;
+}
+
+.detailsCont {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loading, .error {
+  margin-top: 15px;
+  color: #666;
+  font-style: italic;
+}
+
+.error {
+  color: #d32f2f;
+}
+
+@media (max-width: 1024px) {
+  .weatherCont {
+    height: 13rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .weatherCont {
+    height: 13.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .weatherCont {
+    height: 14rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .weatherCont {
+    height: 14rem;
+  }
+}

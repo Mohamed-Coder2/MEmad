@@ -1,0 +1,19 @@
+/* Theme */
+
+body.white-red main {
+	background: #EDEDED;
+	color: #AF3D4E;
+	--pdf-button-bg: #EDEDED;
+  --pdf-button-text: #AF3D4E;
+  --pdf-button-hover: #EDEDED;
+	--pdf-button-border: #AF3D4E;
+	--heading-color: #AF3D4E;
+}
+
+body.white-red .icons-social a {
+	color: #AF3D4E;
+}
+
+body.white-red .icons-social a svg path{
+	fill: #AF3D4E;
+}

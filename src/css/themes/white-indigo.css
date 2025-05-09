@@ -1,0 +1,19 @@
+/* Theme */
+
+body.white-indigo main {
+	background: #E8EAF6;
+	color: #303F9F;
+	--pdf-button-bg: #E8EAF6;
+  --pdf-button-text: #303F9F;
+  --pdf-button-hover: #E8EAF6;
+	--pdf-button-border: #303F9F;
+	--heading-color: #303F9F;
+}
+
+body.white-indigo .icons-social a {
+	color: #303F9F;
+}
+
+body.white-indigo .icons-social a svg path{
+	fill: #303F9F;
+}

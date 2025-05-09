@@ -1,0 +1,338 @@
+/* Typography */
+
+html {
+	font-family: 'Roboto', sans-serif;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+@media (min-width: 576px) {
+	html {
+		font-size: 14px;
+	}
+}
+
+@media (min-width: 768px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+@media (min-width: 992px) {
+	html {
+		font-size: 18px;
+	}
+}
+
+@media (min-width: 1200px) {
+	html {
+		font-size: 20px;
+	}
+}
+
+.icons-social i {
+	font-size: 3em;
+}
+
+/* Custom Styles */
+
+.main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	justify-content: center;
+	padding: 0 30px;
+	text-align: center;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	justify-content: center;
+	padding: 0 30px;
+	text-align: center;
+}
+
+.intro {
+	font-family: 'Reem Kufi', sans-serif;
+	font-size: 3.75em;
+	font-weight: 600;
+}
+
+.tagline {
+	font-size: 1.5rem;
+	margin: 1.5rem 0;
+	font-weight: 100;
+}
+
+.icons-social i {
+	padding: 10px;
+}
+
+.icons-social a {
+  text-decoration: none;
+}
+
+.devto {
+	margin-bottom: -0.20rem;
+}
+
+.devto svg {
+	margin-bottom: -0.20rem;
+	margin-left: 0.675rem;;
+	width: 2.65rem;
+	height: 2.65rem;
+}
+/* PDF Button with Animated Border */
+.pdf-button {
+  position: relative; /* Needed for absolute positioning of the pseudo-element */
+  padding: 10px 20px;
+  background-color: transparent;
+  color: var(--pdf-button-text, white);
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden; /* Keeps the border animation contained within button bounds */
+}
+
+/* Default state border (right to left) */
+.pdf-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--pdf-button-border, currentColor); /* Use theme variable with fallback */
+  transition: width 0.3s ease-out;
+}
+
+/* Hover states */
+.pdf-button:hover::after {
+  width: 100%;
+  right: auto;
+  left: 0;
+}
+
+/* Icon styling */
+.pdf-button i {
+  font-size: 0.8em;
+  transition: transform 0.2s ease-out;
+}
+
+.pdf-button:hover i {
+  transform: translate(2px, -2px);
+}
+
+.h-screen{
+	height: 100vh;
+}
+
+/* about me */
+.about-me {
+	padding: 2rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: left;
+}
+
+.about-me h2{
+	font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.me-text {
+	width: 40%;
+}
+
+/* Skills Section - Responsive with Theme Colors */
+.skills-section {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.skills-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--heading-color, #1c1c1e);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  justify-content: center;
+}
+
+.card {
+  background-color: var(--card-bg, #ffffff);
+  cursor: default;
+  text-align: left;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #1c1c1e;
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  padding-bottom: 0.5rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Add these styles to your existing CSS */
+.card ul li {
+  display: flex;
+  align-items: center; /* Vertical alignment */
+  gap: 0.5rem; /* Space between icon and text */
+  padding: 0.4rem 0;
+  color: var(--text-color, #333333);
+  transition: color 0.2s ease;
+  padding-left: 0; /* Remove left padding since we're using gap */
+}
+
+/* Ensure all icons have consistent sizing */
+.card ul li i, 
+.card ul li span {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem; /* Adjust Font Awesome icons */
+}
+
+/* Specific adjustment for Font Awesome icons */
+.card ul li .fa-brands {
+  font-size: 1.2rem;
+}
+
+.card ul li:hover,
+.card ul li:hover i,
+.card ul li:hover span {
+  color: #0066cc;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.projects {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--heading-color, #1c1c1e);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: #FAFAFA;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  color: #1c1c1e;
+}
+
+.project-card p {
+  margin-left:1rem;
+  margin-right:1rem;
+  text-align: left;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-content {
+  padding: 0.2rem;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card h3 {
+  padding: 0.5rem 0.5rem 0;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.project-description {
+  padding: 0 1rem 1rem;
+}
+
+.fa-linkedin, .fa-github, .fa-envelope {
+  transition: transform 0.5s ease;
+}
+
+.fa-linkedin:hover, .fa-github:hover, .fa-envelope:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Grid Layout */
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .skills-grid > .card:last-child {
+    grid-column: span 2;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .skills-grid > .card:last-child {
+    grid-column: span 1;
+  }
+}
