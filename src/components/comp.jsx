@@ -2,19 +2,9 @@ import ThemePicker from './theme';
 import PDFButton from './pdfViewer'
 import '../css/reset.css';
 import '../css/styles.css';
-import '../css/themes/green-white.css';
-import '../css/themes/grey-white.css';
-import '../css/themes/indigo-white.css';
-import '../css/themes/red-white.css';
-import '../css/themes/white-blue.css';
-import '../css/themes/white-grey.css';
-import '../css/themes/white-indigo.css';
-import '../css/themes/white-red.css';
-import '../css/themes/yellow-black.css';
 
 import cpp from '../assets/svg/cplusplus.svg';
 import fstore from '../assets/svg/firestore.svg';
-import intellij from '../assets/svg/intellijidea.svg';
 import mongo from '../assets/svg/mongo.svg';
 import ms from '../assets/svg/ms_server.svg';
 import mysql from '../assets/svg/mysql.svg';
@@ -29,6 +19,7 @@ import brains from '../assets/svg/jetbrains.svg'
 import Weather from './weatherComponent';
 import chess from '../assets/java_chess.png';
 import droosy from '../assets/droosy.png';
+import Typewriter from './Typewriter';
 
 const Test = () => {
   return (
@@ -36,8 +27,12 @@ const Test = () => {
       <ThemePicker />
       <main>
         <div className='h-screen main'>
-          <div className="intro">Mohamed Emad Abdo</div>
-          <div className="tagline">Software Engineer | Full Stack Web Developer</div>
+          <div className="intro">
+            <Typewriter text={'Mohamed Emad Abdo'} speed={100} />
+          </div>
+          <div className="tagline">
+            <Typewriter text={'Software Engineer | Full Stack Web Developer'} speed={50} />
+          </div>
 
           <div className="icons-social">
             <a target="_blank" href="https://www.linkedin.com/in/mohamed-emad-30a869322/">

@@ -1,74 +1,109 @@
-/* Typography */
+:root {
+  /* Base colors */
+  --bg-color: #FFF9F2;         /* Warm creamy white */
+  --surface-color: #FFEFD8;    /* Soft peach */
+  --text-primary: #3A3226;     /* Warm dark brown */
+  --text-secondary: #6B5C4D;   /* Muted brown */
+  
+  /* Accent colors */
+  --primary: #FF7E5F;          /* Warm coral (main CTA) */
+  --secondary: #FFB347;        /* Golden yellow */
+  --accent: #A78A7F;          /* Muted terracotta */
+  
+  /* Utility colors */
+  --border: #E8D5B5;          /* Light beige */
+  --success: #4CAF50;         /* Green (kept for consistency) */
+  --error: #F44336;           /* Red (kept for consistency) */
+}
+
+[data-theme="dark"] {
+  /* Base colors */
+  --bg-color: #1A1A1A;         /* Deep warm black */
+  --surface-color: #2D2424;    /* Warm dark brown */
+  --text-primary: #F0E6D2;     /* Creamy off-white */
+  --text-secondary: #C7B8A1;   /* Muted beige */
+  
+  /* Accent colors */
+  --primary: #FF9671;          /* Soft coral (brighter for dark mode) */
+  --secondary: #FFC154;        /* Warm gold */
+  --accent: #B39B8B;          /* Warm gray with terracotta undertones */
+  
+  /* Utility colors */
+  --border: #4A3F35;          /* Warm dark brown */
+  --success: #81C784;         /* Soft green */
+  --error: #E57373;           /* Soft red */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 html {
-	font-family: 'Roboto', sans-serif;
+  font-family: 'Delius';
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
 }
 
 @media (min-width: 576px) {
-	html {
-		font-size: 14px;
-	}
+  html {
+    font-size: 14px;
+  }
 }
 
 @media (min-width: 768px) {
-	html {
-		font-size: 16px;
-	}
+  html {
+    font-size: 16px;
+  }
 }
 
 @media (min-width: 992px) {
-	html {
-		font-size: 18px;
-	}
+  html {
+    font-size: 18px;
+  }
 }
 
 @media (min-width: 1200px) {
-	html {
-		font-size: 20px;
-	}
+  html {
+    font-size: 20px;
+  }
 }
 
 .icons-social i {
-	font-size: 3em;
+  font-size: 3em;
 }
 
 /* Custom Styles */
-
-.main {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	justify-content: center;
-	padding: 0 30px;
-	text-align: center;
-}
-
-main {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-	justify-content: center;
-	padding: 0 30px;
-	text-align: center;
+.main, main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  padding: 0 30px;
+  text-align: center;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
 }
 
 .intro {
-	font-family: 'Reem Kufi', sans-serif;
-	font-size: 3.75em;
-	font-weight: 600;
+  font-family: 'DM Serif Text';
+  font-size: 3.75em;
+  font-weight: 500;
+  color: var(--text-primary);
 }
 
 .tagline {
-	font-size: 1.5rem;
-	margin: 1.5rem 0;
-	font-weight: 100;
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
+  font-weight: 100;
+  color: var(--text-secondary);
 }
 
 .icons-social i {
-	padding: 10px;
+  padding: 10px;
+  color: var(--primary);
 }
 
 .icons-social a {
@@ -76,21 +111,22 @@ main {
 }
 
 .devto {
-	margin-bottom: -0.20rem;
+  margin-bottom: -0.20rem;
 }
 
 .devto svg {
-	margin-bottom: -0.20rem;
-	margin-left: 0.675rem;;
-	width: 2.65rem;
-	height: 2.65rem;
+  margin-bottom: -0.20rem;
+  margin-left: 0.675rem;
+  width: 2.65rem;
+  height: 2.65rem;
 }
+
 /* PDF Button with Animated Border */
 .pdf-button {
-  position: relative; /* Needed for absolute positioning of the pseudo-element */
+  position: relative;
   padding: 10px 20px;
   background-color: transparent;
-  color: var(--pdf-button-text, white);
+  color: var(--primary);
   border: none;
   border-radius: 4px;
   font-size: 20px;
@@ -99,10 +135,13 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  overflow: hidden; /* Keeps the border animation contained within button bounds */
+  overflow: hidden;
 }
 
-/* Default state border (right to left) */
+.pdf-button:hover {
+  color: var(--accent);
+}
+
 .pdf-button::after {
   content: '';
   position: absolute;
@@ -110,18 +149,16 @@ main {
   right: 0;
   width: 0%;
   height: 2px;
-  background-color: var(--pdf-button-border, currentColor); /* Use theme variable with fallback */
+  background-color: var(--border);
   transition: width 0.3s ease-out;
 }
 
-/* Hover states */
 .pdf-button:hover::after {
   width: 100%;
   right: auto;
   left: 0;
 }
 
-/* Icon styling */
 .pdf-button i {
   font-size: 0.8em;
   transition: transform 0.2s ease-out;
@@ -131,41 +168,45 @@ main {
   transform: translate(2px, -2px);
 }
 
-.h-screen{
-	height: 100vh;
+.h-screen {
+  height: 100vh;
 }
 
-/* about me */
+/* About me */
 .about-me {
-	padding: 2rem;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: left;
+  padding: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  background-color: var(--bg-color);
 }
 
-.about-me h2{
-	font-size: 2.5rem;
+.about-me h2 {
+  font-size: 2.5rem;
   margin-bottom: 2rem;
+  color: var(--text-primary);
 }
 
 .me-text {
-	width: 40%;
+  width: 70%;
+  color: var(--text-secondary);
 }
 
-/* Skills Section - Responsive with Theme Colors */
+/* Skills Section */
 .skills-section {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
   text-align: center;
+  background-color: var(--bg-color);
 }
 
 .skills-section h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: var(--heading-color, #1c1c1e);
+  color: var(--text-primary);
 }
 
 .skills-grid {
@@ -176,21 +217,20 @@ main {
 }
 
 .card {
-  background-color: var(--card-bg, #ffffff);
+  background-color: var(--surface-color);
   cursor: default;
   text-align: left;
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
 .card h3 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: #1c1c1e;
-  border-bottom: 1px solid var(--border-color, #e0e0e0);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
   padding-bottom: 0.5rem;
 }
 
@@ -200,18 +240,15 @@ main {
   margin: 0;
 }
 
-/* Add these styles to your existing CSS */
 .card ul li {
   display: flex;
-  align-items: center; /* Vertical alignment */
-  gap: 0.5rem; /* Space between icon and text */
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.4rem 0;
-  color: var(--text-color, #333333);
+  color: var(--text-secondary);
   transition: color 0.2s ease;
-  padding-left: 0; /* Remove left padding since we're using gap */
 }
 
-/* Ensure all icons have consistent sizing */
 .card ul li i, 
 .card ul li span {
   width: 24px;
@@ -219,10 +256,9 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem; /* Adjust Font Awesome icons */
+  font-size: 1.1rem;
 }
 
-/* Specific adjustment for Font Awesome icons */
 .card ul li .fa-brands {
   font-size: 1.2rem;
 }
@@ -230,22 +266,25 @@ main {
 .card ul li:hover,
 .card ul li:hover i,
 .card ul li:hover span {
-  color: #0066cc;
+  color: var(--accent);
 }
 
 .card:hover {
   transform: translateY(-5px);
 }
 
+/* Projects Section */
 .projects {
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 1em;
+  background-color: var(--bg-color);
 }
 
 .projects h2 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: var(--heading-color, #1c1c1e);
+  color: var(--text-primary);
 }
 
 .projects-grid {
@@ -256,19 +295,21 @@ main {
 }
 
 .project-card {
-  background-color: #FAFAFA;
+  background-color: var(--surface-color);
   border-radius: 8px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease;
-  color: #1c1c1e;
+  color: var(--text-primary);
 }
 
 .project-card p {
-  margin-left:1rem;
-  margin-right:1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   text-align: left;
+  color: var(--text-secondary);
 }
+
 .project-card:hover {
   transform: translateY(-5px);
 }
@@ -285,18 +326,44 @@ main {
   padding: 0.5rem 0.5rem 0;
   margin: 0;
   font-size: 1.3rem;
+  color: var(--text-primary);
 }
 
 .project-description {
   padding: 0 1rem 1rem;
+  color: var(--text-secondary);
 }
 
 .fa-linkedin, .fa-github, .fa-envelope {
   transition: transform 0.5s ease;
+  color: var(--primary);
 }
 
 .fa-linkedin:hover, .fa-github:hover, .fa-envelope:hover {
   transform: translateY(-5px);
+  color: var(--accent);
+}
+
+/* Typewriter Styles */
+.typewriter-container {
+  display: inline-block;
+  position: relative;
+}
+
+.typewriter-text {
+  display: inline-block;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  color: var(--primary);
+}
+
+@keyframes blink {
+  from, to { opacity: 1 }
+  50% { opacity: 0 }
 }
 
 /* Responsive Grid Layout */
@@ -306,14 +373,9 @@ main {
   }
 }
 
-
 @media (max-width: 768px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .skills-grid > .card:last-child {
-    grid-column: span 2;
   }
 
   .projects-grid {
@@ -322,9 +384,7 @@ main {
 }
 
 @media (max-width: 640px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
+
 }
 
 @media (max-width: 480px) {

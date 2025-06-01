@@ -1,0 +1,23 @@
+/* Typewriter effect */
+.typewriter {
+  overflow: hidden; /* Ensures text doesn't show before animation */
+  border-right: 3px solid var(--primary); /* The cursor */
+  white-space: nowrap; /* Keeps text on one line */
+  margin: 0 auto; /* Centers the text */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The cursor blink effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--primary); }
+}
