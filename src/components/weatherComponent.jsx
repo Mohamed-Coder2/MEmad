@@ -23,62 +23,59 @@ const Weather = ({ EN = true }) => {
     return () => clearInterval(timer);
   }, []);
 
-  // Get user location
+  // Get random location coordinates
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          const { latitude, longitude } = position.coords;
+    const getRandomCoordinates = () => {
+      // Generate random latitude (-90 to 90) and longitude (-180 to 180)
+      const latitude = (Math.random() * 180 - 90).toFixed(4);
+      const longitude = (Math.random() * 360 - 180).toFixed(4);
+      return { latitude, longitude };
+    };
 
-          try {
-            // Use Nominatim API for reverse geocoding
-            // In your geolocation useEffect:
-            const response = await fetch(
-              `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
-              {
-                headers: {
-                  'Accept-Language': EN ? 'en' : 'ar'
-                }
-              }
-            );
-            const data = await response.json();
-
-            setLocation({
-              city: data.address.city || data.address.town || data.address.village || 'Unknown location',
-              country: data.address.country,
-              latitude,
-              longitude
-            });
-          } catch (error) {
-            console.error('Error fetching location data:', error);
-            setLocation({
-              city: EN ? 'Location available but name not found' : 'الموقع متاح ولكن الاسم غير موجود',
-              latitude,
-              longitude
-            });
+  const fetchLocationData = async (latitude, longitude) => {
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
+        {
+          headers: {
+            'Accept-Language': EN ? 'en' : 'ar'
           }
-        },
-        (error) => {
-          console.error('Error getting location:', error);
-          // Fallback to Cairo, Egypt
-          const fallback = {
-            city: EN ? 'Cairo (default)' : 'القاهرة (افتراضي)',
-            country: EN ? 'Egypt' : 'مصر',
-            latitude: 30.0444,
-            longitude: 31.2357
-          };
-          setLocation(fallback);
         }
       );
-    } else {
-      const fallback = {
-        city: EN ? 'Cairo (default)' : 'القاهرة (افتراضي)',
-        country: EN ? 'Egypt' : 'مصر',
-        latitude: 30.0444,
-        longitude: 31.2357
-      };
-      setLocation(fallback);
-    }    
+      const data = await response.json();
+
+      // Better city name extraction (tries multiple address fields)
+      const cityName = 
+        data.address.city || 
+        data.address.town || 
+        data.address.village || 
+        data.address.county || 
+        data.address.state ||
+        (EN ? 'Random location' : 'موقع عشوائي');
+
+      const countryName = 
+        data.address.country || 
+        (EN ? 'Unknown country' : 'دولة غير معروفة');
+
+      setLocation({
+        city: cityName,
+        country: countryName,
+        latitude,
+        longitude
+      });
+    } catch (error) {
+      console.error('Error fetching location data:', error);
+      setLocation({
+        city: EN ? 'Random location' : 'موقع عشوائي',
+        country: EN ? 'Unknown country' : 'دولة غير معروفة',
+        latitude,
+        longitude
+      });
+    }
+  };
+
+    const { latitude, longitude } = getRandomCoordinates();
+    fetchLocationData(latitude, longitude);
   }, [EN]);
 
   // Format Georgian date (Gregorian calendar in selected language)
