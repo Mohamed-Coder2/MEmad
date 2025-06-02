@@ -1,18 +1,68 @@
 import '../css/Weather.css';
 import { useState, useEffect } from 'react';
 
-// List of major world cities with coordinates
+// Major cities with bilingual names
 const MAJOR_CITIES = [
-  { city: 'New York', country: 'United States', lat: 40.7128, lon: -74.0060 },
-  { city: 'London', country: 'United Kingdom', lat: 51.5074, lon: -0.1278 },
-  { city: 'Tokyo', country: 'Japan', lat: 35.6762, lon: 139.6503 },
-  { city: 'Paris', country: 'France', lat: 48.8566, lon: 2.3522 },
-  { city: 'Dubai', country: 'UAE', lat: 25.2048, lon: 55.2708 },
-  { city: 'Singapore', country: 'Singapore', lat: 1.3521, lon: 103.8198 },
-  { city: 'Cairo', country: 'Egypt', lat: 30.0444, lon: 31.2357 },
-  { city: 'Moscow', country: 'Russia', lat: 55.7558, lon: 37.6173 },
-  { city: 'Sydney', country: 'Australia', lat: -33.8688, lon: 151.2093 },
-  { city: 'Rio de Janeiro', country: 'Brazil', lat: -22.9068, lon: -43.1729 }
+  { 
+    city: { en: 'New York', ar: 'نيويورك' }, 
+    country: { en: 'United States', ar: 'الولايات المتحدة' }, 
+    lat: 40.7128, 
+    lon: -74.0060 
+  },
+  { 
+    city: { en: 'London', ar: 'لندن' }, 
+    country: { en: 'United Kingdom', ar: 'المملكة المتحدة' }, 
+    lat: 51.5074, 
+    lon: -0.1278 
+  },
+  { 
+    city: { en: 'Tokyo', ar: 'طوكيو' }, 
+    country: { en: 'Japan', ar: 'اليابان' }, 
+    lat: 35.6762, 
+    lon: 139.6503 
+  },
+  { 
+    city: { en: 'Paris', ar: 'باريس' }, 
+    country: { en: 'France', ar: 'فرنسا' }, 
+    lat: 48.8566, 
+    lon: 2.3522 
+  },
+  { 
+    city: { en: 'Dubai', ar: 'دبي' }, 
+    country: { en: 'UAE', ar: 'الإمارات' }, 
+    lat: 25.2048, 
+    lon: 55.2708 
+  },
+  { 
+    city: { en: 'Singapore', ar: 'سنغافورة' }, 
+    country: { en: 'Singapore', ar: 'سنغافورة' }, 
+    lat: 1.3521, 
+    lon: 103.8198 
+  },
+  { 
+    city: { en: 'Cairo', ar: 'القاهرة' }, 
+    country: { en: 'Egypt', ar: 'مصر' }, 
+    lat: 30.0444, 
+    lon: 31.2357 
+  },
+  { 
+    city: { en: 'Moscow', ar: 'موسكو' }, 
+    country: { en: 'Russia', ar: 'روسيا' }, 
+    lat: 55.7558, 
+    lon: 37.6173 
+  },
+  { 
+    city: { en: 'Sydney', ar: 'سيدني' }, 
+    country: { en: 'Australia', ar: 'أستراليا' }, 
+    lat: -33.8688, 
+    lon: 151.2093 
+  },
+  { 
+    city: { en: 'Rio de Janeiro', ar: 'ريو دي جانيرو' }, 
+    country: { en: 'Brazil', ar: 'البرازيل' }, 
+    lat: -22.9068, 
+    lon: -43.1729 
+  }
 ];
 
 const Weather = ({ EN = true }) => {
@@ -37,16 +87,16 @@ const Weather = ({ EN = true }) => {
     return () => clearInterval(timer);
   }, []);
 
-// Set random major city on load
+  // Set random major city on load
   useEffect(() => {
     const randomCity = MAJOR_CITIES[Math.floor(Math.random() * MAJOR_CITIES.length)];
     setLocation({
-      city: randomCity.city,
-      country: randomCity.country,
+      city: EN ? randomCity.city.en : randomCity.city.ar,
+      country: EN ? randomCity.country.en : randomCity.country.ar,
       latitude: randomCity.lat,
       longitude: randomCity.lon
     });
-  }, []);
+  }, [EN]); // Re-run when language changes
 
   // Format Georgian date (Gregorian calendar in selected language)
   useEffect(() => {
