@@ -1,6 +1,20 @@
 import '../css/Weather.css';
 import { useState, useEffect } from 'react';
 
+// List of major world cities with coordinates
+const MAJOR_CITIES = [
+  { city: 'New York', country: 'United States', lat: 40.7128, lon: -74.0060 },
+  { city: 'London', country: 'United Kingdom', lat: 51.5074, lon: -0.1278 },
+  { city: 'Tokyo', country: 'Japan', lat: 35.6762, lon: 139.6503 },
+  { city: 'Paris', country: 'France', lat: 48.8566, lon: 2.3522 },
+  { city: 'Dubai', country: 'UAE', lat: 25.2048, lon: 55.2708 },
+  { city: 'Singapore', country: 'Singapore', lat: 1.3521, lon: 103.8198 },
+  { city: 'Cairo', country: 'Egypt', lat: 30.0444, lon: 31.2357 },
+  { city: 'Moscow', country: 'Russia', lat: 55.7558, lon: 37.6173 },
+  { city: 'Sydney', country: 'Australia', lat: -33.8688, lon: 151.2093 },
+  { city: 'Rio de Janeiro', country: 'Brazil', lat: -22.9068, lon: -43.1729 }
+];
+
 const Weather = ({ EN = true }) => {
   const [time, setTime] = useState(new Date());
   const [location, setLocation] = useState({
@@ -23,60 +37,16 @@ const Weather = ({ EN = true }) => {
     return () => clearInterval(timer);
   }, []);
 
-  // Get random location coordinates
+// Set random major city on load
   useEffect(() => {
-    const getRandomCoordinates = () => {
-      // Generate random latitude (-90 to 90) and longitude (-180 to 180)
-      const latitude = (Math.random() * 180 - 90).toFixed(4);
-      const longitude = (Math.random() * 360 - 180).toFixed(4);
-      return { latitude, longitude };
-    };
-
-  const fetchLocationData = async (latitude, longitude) => {
-    try {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
-        {
-          headers: {
-            'Accept-Language': EN ? 'en' : 'ar'
-          }
-        }
-      );
-      const data = await response.json();
-
-      // Better city name extraction (tries multiple address fields)
-      const cityName = 
-        data.address.city || 
-        data.address.town || 
-        data.address.village || 
-        data.address.county || 
-        data.address.state ||
-        (EN ? 'Random location' : 'موقع عشوائي');
-
-      const countryName = 
-        data.address.country || 
-        (EN ? 'Unknown country' : 'دولة غير معروفة');
-
-      setLocation({
-        city: cityName,
-        country: countryName,
-        latitude,
-        longitude
-      });
-    } catch (error) {
-      console.error('Error fetching location data:', error);
-      setLocation({
-        city: EN ? 'Random location' : 'موقع عشوائي',
-        country: EN ? 'Unknown country' : 'دولة غير معروفة',
-        latitude,
-        longitude
-      });
-    }
-  };
-
-    const { latitude, longitude } = getRandomCoordinates();
-    fetchLocationData(latitude, longitude);
-  }, [EN]);
+    const randomCity = MAJOR_CITIES[Math.floor(Math.random() * MAJOR_CITIES.length)];
+    setLocation({
+      city: randomCity.city,
+      country: randomCity.country,
+      latitude: randomCity.lat,
+      longitude: randomCity.lon
+    });
+  }, []);
 
   // Format Georgian date (Gregorian calendar in selected language)
   useEffect(() => {
@@ -109,7 +79,7 @@ const Weather = ({ EN = true }) => {
     );
   }, [time, EN]);
 
-  // Fetch weather data from OpenWeatherMap
+// Fetch weather data
   useEffect(() => {
     const fetchWeatherData = async () => {
       if (!location.latitude || !location.longitude) return;
@@ -117,32 +87,25 @@ const Weather = ({ EN = true }) => {
       try {
         setLoading(true);
         const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-        if (!apiKey) {
-          throw new Error(EN ? 'Weather API key is missing' : 'مفتاح واجهة برمجة تطبيقات الطقس مفقود');
-        }
+        if (!apiKey) throw new Error(EN ? 'API key missing' : 'مفتاح API مفقود');
 
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${apiKey}&units=metric`
         );
 
-        if (!response.ok) {
-          throw new Error(EN ? 'Failed to fetch weather data' : 'فشل جلب بيانات الطقس');
-        }
-
+        if (!response.ok) throw new Error(EN ? 'Weather fetch failed' : 'فشل جلب بيانات الطقس');
+        
         const data = await response.json();
         setWeatherData(data);
-        setError(null);
       } catch (err) {
-        console.error('Error fetching weather data:', err);
-        setError(EN ? 'Failed to load weather data' : 'فشل تحميل بيانات الطقس');
+        setError(EN ? 'Weather data error' : 'خطأ في بيانات الطقس');
       } finally {
         setLoading(false);
       }
     };
 
     fetchWeatherData();
-  }, [location.latitude, location.longitude, EN]);
-
+  }, [location, EN]);
   return (
     <div className='weatherCont' dir={EN ? 'ltr' : 'rtl'}>
       <div className='top'>
