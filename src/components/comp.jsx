@@ -1,4 +1,5 @@
 import ThemePicker from './theme';
+import { useState } from 'react';
 import PDFButton from './pdfViewer'
 import '../css/reset.css';
 import '../css/styles.css';
@@ -22,16 +23,32 @@ import droosy from '../assets/droosy.png';
 import Typewriter from './Typewriter';
 
 const Test = () => {
+  
+  const [EN, setLang] = useState(true);
+
+  const Name = EN ? 'Mohamed Emad Abdo' : 'محمد عماد عبده'
+  const Title = EN ? 'Software Engineer | Full Stack Web Developer':'مهندس برمجيات | مطور ويب متكامل'
+
+  const handleLang = () => {
+    setLang(prev => !prev)
+  }
+
   return (
     <div>
       <ThemePicker />
+      <div
+        className='fa-lg lang'
+        onClick={handleLang}
+      >
+        {EN ? 'AR':'EN'}
+      </div>
       <main>
         <div className='h-screen main'>
           <div className="intro">
-            <Typewriter text={'Mohamed Emad Abdo'} speed={100} />
+            <Typewriter text={Name} speed={100} />
           </div>
           <div className="tagline">
-            <Typewriter text={'Software Engineer | Full Stack Web Developer'} speed={50} />
+            <Typewriter text={Title} speed={50} />
           </div>
 
           <div className="icons-social">
@@ -50,7 +67,7 @@ const Test = () => {
           </div>
 
           <div>
-            <PDFButton />
+            <PDFButton text={EN ? 'Resume':'سيرة ذاتية'}/>
           </div>
         </div>
 
