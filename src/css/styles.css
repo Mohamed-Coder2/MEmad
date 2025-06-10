@@ -1,37 +1,57 @@
 :root {
   /* Base colors */
-  --bg-color: #FFF9F2;         /* Warm creamy white */
-  --surface-color: #FFEFD8;    /* Soft peach */
-  --text-primary: #3A3226;     /* Warm dark brown */
-  --text-secondary: #6B5C4D;   /* Muted brown */
-  
+  --bg-color: #FFF9F2;
+  /* Warm creamy white */
+  --surface-color: #FFEFD8;
+  /* Soft peach */
+  --text-primary: #3A3226;
+  /* Warm dark brown */
+  --text-secondary: #6B5C4D;
+  /* Muted brown */
+
   /* Accent colors */
-  --primary: #FF7E5F;          /* Warm coral (main CTA) */
-  --secondary: #FFB347;        /* Golden yellow */
-  --accent: #A78A7F;          /* Muted terracotta */
-  
+  --primary: #FF7E5F;
+  /* Warm coral (main CTA) */
+  --secondary: #FFB347;
+  /* Golden yellow */
+  --accent: #A78A7F;
+  /* Muted terracotta */
+
   /* Utility colors */
-  --border: #E8D5B5;          /* Light beige */
-  --success: #4CAF50;         /* Green (kept for consistency) */
-  --error: #F44336;           /* Red (kept for consistency) */
+  --border: #E8D5B5;
+  /* Light beige */
+  --success: #4CAF50;
+  /* Green (kept for consistency) */
+  --error: #F44336;
+  /* Red (kept for consistency) */
 }
 
 [data-theme="dark"] {
   /* Base colors */
-  --bg-color: #1A1A1A;         /* Deep warm black */
-  --surface-color: #2D2424;    /* Warm dark brown */
-  --text-primary: #F0E6D2;     /* Creamy off-white */
-  --text-secondary: #C7B8A1;   /* Muted beige */
-  
+  --bg-color: #1A1A1A;
+  /* Deep warm black */
+  --surface-color: #2D2424;
+  /* Warm dark brown */
+  --text-primary: #F0E6D2;
+  /* Creamy off-white */
+  --text-secondary: #C7B8A1;
+  /* Muted beige */
+
   /* Accent colors */
-  --primary: #FF9671;          /* Soft coral (brighter for dark mode) */
-  --secondary: #FFC154;        /* Warm gold */
-  --accent: #B39B8B;          /* Warm gray with terracotta undertones */
-  
+  --primary: #FF9671;
+  /* Soft coral (brighter for dark mode) */
+  --secondary: #FFC154;
+  /* Warm gold */
+  --accent: #B39B8B;
+  /* Warm gray with terracotta undertones */
+
   /* Utility colors */
-  --border: #4A3F35;          /* Warm dark brown */
-  --success: #81C784;         /* Soft green */
-  --error: #E57373;           /* Soft red */
+  --border: #4A3F35;
+  /* Warm dark brown */
+  --success: #81C784;
+  /* Soft green */
+  --error: #E57373;
+  /* Soft red */
 }
 
 body {
@@ -42,9 +62,17 @@ body {
 
 html {
   font-family: 'Delius';
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
+}
+
+.AR {
+  direction: rtl;
+  text-align: right;
 }
 
 @media (min-width: 576px) {
@@ -87,7 +115,8 @@ html {
 }
 
 /* Custom Styles */
-.main, main {
+.main,
+main {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -260,7 +289,7 @@ html {
   transition: color 0.2s ease;
 }
 
-.card ul li i, 
+.card ul li i,
 .card ul li span {
   width: 24px;
   height: 24px;
@@ -345,12 +374,16 @@ html {
   color: var(--text-secondary);
 }
 
-.fa-linkedin, .fa-github, .fa-envelope {
+.fa-linkedin,
+.fa-github,
+.fa-envelope {
   transition: transform 0.5s ease;
   color: var(--primary);
 }
 
-.fa-linkedin:hover, .fa-github:hover, .fa-envelope:hover {
+.fa-linkedin:hover,
+.fa-github:hover,
+.fa-envelope:hover {
   transform: translateY(-5px);
   color: var(--accent);
 }
@@ -373,8 +406,15 @@ html {
 }
 
 @keyframes blink {
-  from, to { opacity: 1 }
-  50% { opacity: 0 }
+
+  from,
+  to {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 0
+  }
 }
 
 /* Responsive Grid Layout */
@@ -394,16 +434,14 @@ html {
   }
 }
 
-@media (max-width: 640px) {
-
-}
+@media (max-width: 640px) {}
 
 @media (max-width: 480px) {
   .skills-grid {
     grid-template-columns: 1fr;
   }
-  
-  .skills-grid > .card:last-child {
+
+  .skills-grid>.card:last-child {
     grid-column: span 1;
   }
 }

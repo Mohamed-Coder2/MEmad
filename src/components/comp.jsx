@@ -23,24 +23,36 @@ import droosy from '../assets/droosy.png';
 import Typewriter from './Typewriter';
 
 const Test = () => {
-  
+
   const [EN, setLang] = useState(true);
 
   const Name = EN ? 'Mohamed Emad Abdo' : 'محمد عماد عبده'
-  const Title = EN ? 'Software Engineer | Full Stack Web Developer':'مهندس برمجيات | مطور ويب متكامل'
+  const Title = EN ? 'Software Engineer | Full Stack Developer' : 'مهندس برمجيات | مطور متكامل'
+  const body = EN ? 'About Me!' : 'من أنا'
+  const body1 = EN ? `Hi! I’m Mohamed Emad, a passionate Computer Science student at Cairo University, graduating in 2025.
+              I specialize in full-stack web development and have hands-on experience with real-world projects using
+              technologies like React, Node.js, PostgreSQL, and Docker.`: 'مرحباً! أنا محمد عماد، طالب شغوف في علوم الحاسوب بجامعة القاهرة، سأتخرج عام ٢٠٢٥. أتخصص في تطوير الويب الشامل، ولدي خبرة عملية في مشاريع واقعية باستخدام تقنيات مثل React وNode.js وPostgreSQL وDocker.'
+  const body2 = EN ? `I’ve built and deployed several web applications including a student management system that tracks
+              attendance and grades with visual charts, and a courier tracking platform with real-time delivery
+              updates. These projects taught me how to design scalable systems, develop RESTful APIs, and deliver
+              functional UI experiences.`: 'لقد قمتُ ببناء ونشر العديد من تطبيقات الويب، بما في ذلك نظام إدارة الطلاب الذي يتتبع الحضور والدرجات باستخدام مخططات مرئية، ومنصة تتبع البريد السريع مع تحديثات فورية للتوصيل. علمتني هذه المشاريع كيفية تصميم أنظمة قابلة للتطوير، وتطوير واجهات برمجة تطبيقات RESTful، وتقديم تجارب واجهة مستخدم عملية.'
+  const body3 = EN ? `I’ve also trained with CIB Bank where I explored the fundamentals of banking, financial inclusion, and sustainability
+  giving me insight into secure and ethical tech applications in the financial sector.`: 'لقد تدربت أيضًا في بنك CIB حيث استكشفت أساسيات الخدمات المصرفية والشمول المالي والاستدامة، مما منحني نظرة ثاقبة حول تطبيقات التكنولوجيا الآمنة والأخلاقية في القطاع المالي.'
+  const body4 = EN ? `Outside of tech, I’m fluent in Arabic and English, and I take pride in my adaptability, communication
+              skills, and eagerness to learn.`: 'بعيدًا عن التكنولوجيا، أتقن اللغتين العربية والإنجليزية، وأفتخر بقدرتي على التكيف ومهاراتي في التواصل وشغفي بالتعلم.'
 
   const handleLang = () => {
     setLang(prev => !prev)
   }
 
   return (
-    <div>
+    <div className={EN ? '':'AR'}>
       <ThemePicker />
       <div
         className='fa-lg lang'
         onClick={handleLang}
       >
-        {EN ? 'AR':'EN'}
+        {EN ? 'AR' : 'EN'}
       </div>
       <main>
         <div className='h-screen main'>
@@ -67,35 +79,20 @@ const Test = () => {
           </div>
 
           <div>
-            <PDFButton text={EN ? 'Resume':'سيرة ذاتية'}/>
+            <PDFButton text={EN ? 'Resume' : 'سيرة ذاتية'} />
           </div>
         </div>
 
         <div className='about-me'>
-          <h2>About Me!</h2>
+          <h2>{body}</h2>
           <div className='me-text'>
-            <p>
-              Hi! I’m Mohamed Emad, a passionate Computer Science student at Cairo University, graduating in 2025.
-              I specialize in full-stack web development and have hands-on experience with real-world projects using
-              technologies like React, Node.js, PostgreSQL, and Docker.
-            </p>
+            <p>{body1}</p>
             <br />
-            <p>
-              I’ve built and deployed several web applications including a student management system that tracks
-              attendance and grades with visual charts, and a courier tracking platform with real-time delivery
-              updates. These projects taught me how to design scalable systems, develop RESTful APIs, and deliver
-              functional UI experiences.
-            </p>
+            <p>{body2}</p>
             <br />
-            <p>
-              I’ve also trained with CIB Bank where I explored the fundamentals of banking, financial inclusion, and
-              sustainability—giving me insight into secure and ethical tech applications in the financial sector.
-            </p>
+            <p>{body3}</p>
             <br />
-            <p>
-              Outside of tech, I’m fluent in Arabic and English, and I take pride in my adaptability, communication
-              skills, and eagerness to learn.
-            </p>
+            <p>{body4}</p>
           </div>
         </div>
 
@@ -154,34 +151,10 @@ const Test = () => {
           <h2>Projects</h2>
           <div className="projects-grid">
             {/* Project 1 - Weather App */}
-            <div className="project-card">
-              <h3>Weather App</h3>
-              <div className="project-content">
-                <Weather
-                  EN={true}
-                />
-              </div>
-              <p className="project-description">
-                Real-time weather display with location detection and dual calendar system
-              </p>
-            </div>
-
-            {/* Project 2 - Weather App Variant */}
-            <div className="project-card">
-              <h3>تطبيق الطقس</h3>
-              <div className="project-content">
-                <Weather
-                  EN={false}
-                /> {/* Could be a modified version */}
-              </div>
-              <p className="project-description">
-                عرض الطقس في الوقت الفعلي مع اكتشاف الموقع ونظام التقويم المزدوج
-              </p>
-            </div>
 
             <div className="project-card">
               <h3>Chess desktop game</h3>
-              <img src={chess} width={450}/>
+              <img src={chess} width={450} />
               <p>
                 A Java chess desktop game with more features to come in the future!
               </p>
@@ -194,6 +167,32 @@ const Test = () => {
                 A Student managment web app where students can login to mark their attendance, view their past attendances, take online quizzes and enroll into classes.
               </p>
             </div>
+
+            {EN ?
+              <div className="project-card">
+                <h3>Weather App</h3>
+                <div className="project-content">
+                  <Weather
+                    EN={true}
+                  />
+                </div>
+                <p className="project-description">
+                  Real-time weather display with location detection and dual calendar system
+                </p>
+              </div>
+              :
+              <div className="project-card">
+                <h3>تطبيق الطقس</h3>
+                <div className="project-content">
+                  <Weather
+                    EN={false}
+                  />
+                </div>
+                <p className="project-description">
+                  عرض الطقس في الوقت الفعلي مع اكتشاف الموقع ونظام التقويم المزدوج
+                </p>
+              </div>
+            }
           </div>
         </div>
       </main>
