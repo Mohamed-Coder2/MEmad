@@ -30,8 +30,8 @@ const ThemePicker = () => {
       className='theme-picker fa-lg'
       onClick={toggleTheme}>
       {theme === 'light' ?
-        <i className="fa-regular fa-sun"></i>:
-        <i className="fa-regular fa-moon"></i>
+        <i className="fa-regular fa-moon"></i>:
+        <i className="fa-regular fa-sun"></i>
       }
     </div>
   );
