@@ -36,8 +36,15 @@ const Test = () => {
               attendance and grades with visual charts, and a courier tracking platform with real-time delivery
               updates. These projects taught me how to design scalable systems, develop RESTful APIs, and deliver
               functional UI experiences.`: 'لقد قمتُ ببناء ونشر العديد من تطبيقات الويب، بما في ذلك نظام إدارة الطلاب الذي يتتبع الحضور والدرجات باستخدام مخططات مرئية، ومنصة تتبع البريد السريع مع تحديثات فورية للتوصيل. علمتني هذه المشاريع كيفية تصميم أنظمة قابلة للتطوير، وتطوير واجهات برمجة تطبيقات RESTful، وتقديم تجارب واجهة مستخدم عملية.'
-  const body3 = EN ? `I’ve also trained with CIB Bank where I explored the fundamentals of banking, financial inclusion, and sustainability
-  giving me insight into secure and ethical tech applications in the financial sector.`: 'لقد تدربت أيضًا في بنك CIB حيث استكشفت أساسيات الخدمات المصرفية والشمول المالي والاستدامة، مما منحني نظرة ثاقبة حول تطبيقات التكنولوجيا الآمنة والأخلاقية في القطاع المالي.'
+  const body3 = EN ?
+    `I’ve also trained with CIB Bank where I explored the fundamentals of banking, financial inclusion, and sustainability,
+  giving me insight into secure and ethical tech applications in the financial sector. 
+  Additionally, I completed the ITIDA GIGS Freelancing Program (powered by EYouth), where I gained hands-on experience in
+  profile setup, proposal writing, financial management, communication, and marketing strategies — even landing my first freelance gig.`
+    :
+    `لقد تدربت أيضًا في بنك CIB حيث استكشفت أساسيات الخدمات المصرفية والشمول المالي والاستدامة، مما منحني نظرة ثاقبة حول تطبيقات التكنولوجيا الآمنة والأخلاقية في القطاع المالي. 
+  بالإضافة إلى ذلك، أنهيت برنامج GIGS للعمل الحر من ITIDA (بالتعاون مع EYouth)، حيث اكتسبت خبرة عملية في إعداد الملف التعريفي، وكتابة العروض، والإدارة المالية، والتواصل، واستراتيجيات التسويق — وتمكنت من الحصول على أول فرصة عمل حر خلال البرنامج`
+
   const body4 = EN ? `Outside of tech, I’m fluent in Arabic and English, and I take pride in my adaptability, communication
               skills, and eagerness to learn.`: 'بعيدًا عن التكنولوجيا، أتقن اللغتين العربية والإنجليزية، وأفتخر بقدرتي على التكيف ومهاراتي في التواصل وشغفي بالتعلم.'
 
@@ -46,7 +53,7 @@ const Test = () => {
   }
 
   return (
-    <div className={EN ? '':'AR'}>
+    <div className={EN ? '' : 'AR'}>
       <ThemePicker />
       <div
         className='fa-lg lang'
