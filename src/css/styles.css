@@ -405,6 +405,10 @@ main {
   color: var(--primary);
 }
 
+.exam:hover {
+  cursor: pointer;
+}
+
 @keyframes blink {
 
   from,

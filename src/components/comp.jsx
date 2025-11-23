@@ -21,6 +21,7 @@ import Weather from './weatherComponent';
 import chess from '../assets/java_chess.png';
 import droosy from '../assets/droosy.png';
 import Typewriter from './Typewriter';
+import exam from '../assets/exam.png';
 
 const Test = () => {
 
@@ -156,14 +157,14 @@ const Test = () => {
 
         <div className='projects'>
           <h2>Projects</h2>
-          <div className="projects-grid">
+          <div className="projects-grid" onClick={() => {window.open("https://mohamed-coder2.github.io/coding_test/", "_blank");}}>
             {/* Project 1 - Weather App */}
 
-            <div className="project-card">
-              <h3>Chess desktop game</h3>
-              <img src={chess} width={450} />
+            <div className="project-card exam">
+              <h3>ITI Exam Bank</h3>
+              <img src={exam} width={450} />
               <p>
-                A Java chess desktop game with more features to come in the future!
+                A simple examination website that has some of the topics the ITI usually tests you on
               </p>
             </div>
 
